@@ -1,7 +1,15 @@
 <html>
 <head>
 <script>
- window.location.href="app/src/index.html";
+var tod = new Date();
+var startDate = new Date(2016, 11, 22);
+if(tod.getTime()>startDate.getTime()){
+   window.location.href="app/dist/index.html";
+}
+else{
+   window.location.href="app/dist/index1.html";
+}
+
 </script>
 </head>
 </html>

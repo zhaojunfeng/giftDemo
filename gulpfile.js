@@ -103,7 +103,7 @@ gulp.task('publish-js', function () {
 // inject app/dist/stylesheets/bundle.css and app/dist/javascripts/bundle.js into app/src/index.html
 // and save as app/dist/index.html
 gulp.task('inject', function () {
-    var target = gulp.src('app/src/index.html');
+    var target = gulp.src('app/src/*.html');
     var assets = gulp.src([
         'app/dist/stylesheets/bundle.css',
         'app/dist/javascripts/bundle.js'
@@ -127,14 +127,14 @@ gulp.task('watch', function () {
         }
     });
 
-    gulp.watch('app/src/index.html', ['inject']);
+    gulp.watch('app/src/*.html', ['inject']);
     gulp.watch('app/src/scss/**/*.scss', ['publish-css']);
     gulp.watch('app/src/javascripts/**/*', ['publish-js']);
     gulp.watch('app/src/fonts/**/*', ['publish-fonts']);
     gulp.watch('app/src/images/**/*', ['publish-images']);
     gulp.watch('app/src/audios/**/*', ['publish-audios']);
 
-    gulp.watch('app/dist/index.html').on('change', browserSync.reload);
+    gulp.watch('app/dist/*.html').on('change', browserSync.reload);
     gulp.watch('app/dist/javascripts/*').on('change', browserSync.reload);
     gulp.watch('app/dist/fonts/*').on('change', browserSync.reload);
     gulp.watch('app/dist/images/*').on('change', browserSync.reload);
@@ -189,7 +189,7 @@ gulp.task('uglify-js', function () {
 // inject app/dist/stylesheets/bundle.min.css and app/dist/javascripts/bundle.min.js into app/src/index.html
 // and save as app/dist/index.html
 gulp.task('inject-min', function () {
-    var target = gulp.src('app/src/index.html');
+    var target = gulp.src('app/src/*.html');
     var assets = gulp.src([
         'app/dist/stylesheets/bundle.min.css',
         'app/dist/javascripts/bundle.min.js'
